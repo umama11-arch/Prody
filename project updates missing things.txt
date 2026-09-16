@@ -1,0 +1,8 @@
+missed days handling in cron
+goal remove krna hy localstorage sy logout hne k baad 
+
+if atask iss only for today it should be removed from database at the endof th eday
+AI is buried ~5 clicks deep
+🎯 Goals exist but are apparently living in DevTools
+🧠 Gemini still occasionally has questionable life advice
+📋 Routine task count needs improvement

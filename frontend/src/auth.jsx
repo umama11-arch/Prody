@@ -12,7 +12,7 @@ function Auth({setislogin,setisloginuser}) {
     const [loginPassword, setLoginPassword] = useState("");
     const SignUp = async () => {
         try {
-            await axios.post("https://taskflow-production-19a1.up.railway.app/auth/signup", {
+            await axios.post("http://localhost:4000/AUTH/signup", {
                 username: signupUsername,
                 password: signupPassword
             });
@@ -32,7 +32,7 @@ function Auth({setislogin,setisloginuser}) {
     const login = async () => {
         try {
             
-            const res = await axios.post("https://taskflow-production-19a1.up.railway.app/auth/login", {
+            const res = await axios.post("http://localhost:4000/AUTH/login", {
                 username: loginUsername,
                 password: loginPassword,
             });
@@ -59,8 +59,8 @@ function Auth({setislogin,setisloginuser}) {
     };
 
     return (
-        <div>
-            <div className="loginorsignup">
+        <div className="auth-page">
+            <div className="loginorsignup light">
 
 <h1>TO DO APP </h1>
 {/* <h3>Are you new or just want to login?</h3> */}

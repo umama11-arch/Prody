@@ -11,6 +11,13 @@ const schema=new mongoose.Schema({
         type:Boolean,
         default:false
     },
+    completedDate:{
+      type:Date
+    },
+    completedtoday:{
+      type:Boolean,
+      default:false
+    },
     category:String,
     remainderenable:{
         type:Boolean,
@@ -25,8 +32,27 @@ notified: {
   type: Boolean,
   default: false
 },
-reminderSentAt: Date // null initially
-})
+reminderSentAt: Date,
+goalid: {
+  type:String,
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: "goal",
+required:true
+},
+repeat: {
+    type: String,
+    enum: ["none", "daily", "weekly", "monthly"],
+    default: "none"
+},
+repeatDays: {
+  type: [String],
+  default:[]
+},
 
+repeatDate: {
+  type: Number,
+  default: null
+}
+})
 module.exports=mongoose.model("task",schema);
 

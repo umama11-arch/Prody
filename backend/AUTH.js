@@ -21,12 +21,13 @@ const user = require("./user");
 const signup = async (req, res) => {
     try {
         const { username, password } = req.body;
-
+        const newdate=new Date();
         const hashed = await bcrypt.hash(password, 10);
 
         const newuser = new Usermodel({
             username,
-            password: hashed
+            password: hashed,
+            createdAt:newdate
         });
 
         await newuser.save();

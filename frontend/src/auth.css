@@ -1,190 +1,130 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
-/* AUTH PAGE */
+/* AUTH PAGE WRAPPER */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
 
-.auth-page{
-min-height:100vh;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-padding:40px;
-
-box-sizing:border-box;
+  background: var(--bg);
 }
-
 
 /* HEADER */
-
-.loginorsignup{
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-margin-bottom:40px;
+.loginorsignup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-.loginorsignup h1{
-font-size:64px;
-
-margin:0;
-
-color:var(--text);
+.loginorsignup h1 {
+  font-size: 56px;
+  margin: 0;
+  color: var(--text);
 }
 
-.loginorsignup p{
-color:var(--muted);
+.loginorsignup p {
+  color: var(--muted);
 }
 
-
-/* BOX CONTAINER */
-
-.boxes{
-display:flex;
-
-gap:24px;
-
-justify-content:center;
-
-flex-wrap:wrap;
+/* BOX WRAPPER */
+.boxes {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-
 
 /* CARD */
+.box {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px;
+  width: 400px;
+  min-height: 340px;
 
-.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
 
-background:var(--card);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 
-color:var(--text);
-
-border:1px solid var(--border);
-
-border-radius:20px;
-
-padding:36px;
-
-width:420px;
-
-min-height:350px;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-gap:18px;
-
-box-shadow:
-0 10px 25px rgba(0,0,0,.08);
-
-transition:.25s;
-}
-
-.box:hover{
-
-transform:translateY(-4px);
-
-border-color:var(--primary);
-}
-
-.box h2{
-
-margin:0;
-
-text-align:center;
-
-color:var(--text);
+  transition: 0.25s ease;
+  backdrop-filter: blur(10px);
 }
 
 
-/* INPUT */
-
-.box input{
-
-width:100%;
-
-padding:14px;
-
-box-sizing:border-box;
-
-border-radius:10px;
-
-border:1px solid var(--border);
-
-background:var(--input-bg);
-
-color:var(--text);
-
-outline:none;
-
-margin:0;
+.box:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
 }
 
-.box input:focus{
-
-border-color:var(--primary);
-
-box-shadow:
-0 0 0 4px rgba(99,102,241,.15);
+/* TITLE */
+.box h2 {
+  text-align: center;
+  margin: 0;
+  color: var(--text);
 }
 
+/* INPUT FIX (IMPORTANT) */
+.box input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+
+  outline: none;
+  margin: 0;
+}
+
+.box input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+}
 
 /* BUTTON */
+.box button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
 
-.box button{
+  background: var(--primary);
+  color: white;
 
-width:100%;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
 
-padding:14px;
-
-border:none;
-
-border-radius:10px;
-
-background:var(--primary);
-
-color:white;
-
-font-size:16px;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:.2s;
+  transition: 0.2s ease;
 }
 
-.box button:hover{
-
-background:var(--primary-hover);
-
-transform:translateY(-2px);
+.box button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
 }
-
 
 /* RESPONSIVE */
+@media (max-width: 900px) {
+  .boxes {
+    flex-direction: column;
+    align-items: center;
+  }
 
-@media(max-width:900px){
+  .loginorsignup h1 {
+    font-size: 40px;
+  }
 
-.boxes{
-flex-direction:column;
-
-align-items:center;
-}
-
-.loginorsignup h1{
-font-size:42px;
-}
-
-.box{
-width:90%;
-}
-
+  .box {
+    width: 90%;
+  }
 }

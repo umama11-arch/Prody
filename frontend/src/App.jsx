@@ -5,9 +5,14 @@ import Auth from './auth';
 import toast, { Toaster } from "react-hot-toast";
 import Analytics from './analytics';
 import Sidebar from './sidebar';
+import Ai from './Ai';
+import Goal from './goal'
 // import user from './user
 // ';
 function App() {
+  const [deleteTaskId, setDeleteTaskId] = useState(null);
+  const [repeatDate, setRepeatDate] = useState("");
+  const [repeatDays, setRepeatDays] = useState([]);
   const [todaytasks, setTodayTasks] = useState([]);
   // const [timervalue, settimervalue] = useState("");
   const [page, setPage] = useState("task");
@@ -31,8 +36,13 @@ function App() {
   const [remainderenable, setremainderenable] = useState(false)
   const [reminderTime, setremainderTime] = useState(1)
   const [dark, setDark] = useState(false)
+  const [recurring, setrecurring] = useState("none")
+  const API_URL = process.env.REACT_APP_API_URL;
+  console.log("API_URL",API_URL)
 
-
+  // console.log(activegoal)
+  console.log("i am from  localstorage", localStorage.getItem("activegoal"))
+  console.log(isloginuser)
   useEffect(() => {
     if ("Notification" in window) {
       Notification.requestPermission();
@@ -48,8 +58,7 @@ function App() {
 
       try {
 
-        const res = await axios.get(
-          "https://taskflow-production-19a1.up.railway.app/reminders",
+        const res = await axios.get(`${API_URL}/reminders`,
           {
             params: {
               userid: isloginuser
@@ -62,7 +71,7 @@ function App() {
 
           showNotification(task.task);
           await axios.patch(
-            `https://taskflow-production-19a1.up.railway.app/reminders/${task._id}`
+            `${API_URL}/reminders/${task._id}`
           );
 
         }
@@ -105,20 +114,25 @@ function App() {
 
   };
   const getTaskStatus = (task) => {
-    const now = new Date();
-    const taskTime = new Date(task.time);
+  const taskTime = new Date(task.time);
+  const now = new Date();
 
-    if (task.completed) {
-      return "Completed";
-    }
+  if (task.completed) {
+    return "Completed";
+  }
 
-    if (taskTime < now) {
-      return "Overdue";
-    }
+  const taskMinutes =
+    taskTime.getHours() * 60 + taskTime.getMinutes();
 
-    return "Upcoming";
-  };
+  const nowMinutes =
+    now.getHours() * 60 + now.getMinutes();
 
+  if (taskMinutes < nowMinutes) {
+    return "Overdue";
+  }
+
+  return "Upcoming";
+};
   const getPriorityColor = (priority) => {
     if (priority === "Low") {
       return <div className='circleyellow'></div>;
@@ -142,8 +156,11 @@ function App() {
       return <div className='circlered'></div>
     }
   }
-  const filteredTasks = tasks.filter(t => {
-    if (filter === "completed") return t.completed;
+
+  const filteredTasks = todaytasks.filter(t => {
+    if (filter === "completed") {
+      return t.completed;
+    }
     if (filter === "pending") return !t.completed;
     return true;
   });
@@ -166,7 +183,7 @@ function App() {
       setLoading(true)
       const res =
         await axios.get(
-          "https://taskflow-production-19a1.up.railway.app/todaytask",
+          `${API_URL}/todaytask`,
           {
             params: {
               userid: isloginuser
@@ -194,83 +211,99 @@ function App() {
 
   }
   // const todaytasks=gettodaytask()
+  console.log("today tasks", todaytasks)
 
-  
   localStorage.setItem("isloginuser", isloginuser)
   const completetasks = async (id, completed) => {
-
+    const date = new Date()
     await axios.put(
-      `https://taskflow-production-19a1.up.railway.app/completetask/${id}`,
+      `${API_URL}/completetask/${id}`,
       {
-        completed: !completed
+        completed: true,
+        // completed: !completed,
+        completedDate: date
       }
     );
 
     await displaytask();
   }
-  
+
   const addTask = async () => {
     setLoading(true)
-    await axios.post("https://taskflow-production-19a1.up.railway.app/addtask", {
+    const activegoal = JSON.parse(localStorage.getItem("activegoal"));
+     if (!activegoal) {
+      toast.error("Please select a goal First")
+    // toast.warning("Please select a goal first");
+    setLoading(false);
+    return;
+  }
+    await axios.post(`${API_URL}/addtask`, {
       task: task,
       time: time,
       priority: priority,
       userid: isloginuser,
       category: category,
       remainderenable: remainderenable,
-      reminderTime: reminderTime
+      reminderTime: reminderTime,
+      goalid: activegoal.id,
+      repeat: recurring,
+      repeatDays, repeatDate
     });
     toast.success("Task added successfully")
-    
+
+    console.log(recurring)
+    setrecurring("")
     setTask("");
     settime("");
     // setuserid("")
-    displaytask()
+    gettodaytask()
     setLoading(false)
   };
-  
+
 
 
   const displaytask = async () => {
-    const res = await axios.get(`https://taskflow-production-19a1.up.railway.app/displaytask?userid=${isloginuser}`)
+    const res = await axios.get(`${API_URL}/displaytask?userid=${isloginuser}`)
     setTasks(res.data);
   }
+ 
   const deletetask = async (id) => {
-    await axios.delete(`https://taskflow-production-19a1.up.railway.app/deletetask/${id}`);
+    await axios.delete(`${API_URL}/deletetask/${id}`);
     toast.success("Task deleted")
-    displaytask();
+    gettodaytask()
   }
 
   const updateTask = async () => {
-    await axios.put(`https://taskflow-production-19a1.up.railway.app/updatetask/${currentId}`, {
+    await axios.put(`${API_URL}/updatetask/${currentId}`, {
       task: editTask,
       time: editTime
     });
     toast.success("Task updated")
     setEditModal(false);
-    displaytask();
+    gettodaytask()
   };
-  
+
   // const islogin=false;  
   const setSearchf = async () => {
-    const res = await axios.get(`https://taskflow-production-19a1.up.railway.app/searchtask?`, {
+    const res = await axios.get(`${API_URL}/searchtask?`, {
       params: {
         query: search,
         userid: isloginuser
       }
     })
     setsearch("")
+    setTodayTasks(res.data)
     setTasks(res.data)
-    // console.log(res.data)
   }
-  
+
   const signout = () => {
     localStorage.removeItem("islogin")
     localStorage.removeItem("isloginuser")
     setislogin(false)
+    localStorage.removeItem("activegoal")
     // console.log("hey guys")
   }
-  
+
 
   useEffect(() => {
     const login = localStorage.getItem("islogin");
@@ -282,23 +315,22 @@ function App() {
     }
   }, []);
   useEffect(() => {
-   if (isloginuser) {
-     displaytask();
-     gettodaytask();
-     console.log(isloginuser)
-   }
- }, [isloginuser, displaytask, gettodaytask]);
+    if (isloginuser) {
+      // displaytask();
+      gettodaytask();
+    }
+  }, [isloginuser]);
   if (islogin === false) {
     return <div><Auth setislogin={setislogin}
-    setisloginuser={setisloginuser}
+      setisloginuser={setisloginuser}
     /></div>
   }
 
-  
-  
+
+
   // const status=getTaskStatus(t)
   if (islogin === true) {
-    
+
 
     // console.log("app",islogin);
     return (
@@ -369,7 +401,70 @@ function App() {
                       Number(e.target.value)
                     )}
                 />
-                <button className='addtaskbtn'
+
+                <select
+                  className="recurring-task"
+                  value={recurring}
+                  onChange={(e) => setrecurring(e.target.value)}
+                >
+                  <option value={"none"}>none</option>
+                  <option>daily</option>
+                  <option>monthly</option>
+                  <option>weekly</option>
+                </select>
+
+
+                {/* WEEKLY */}
+                {recurring === "weekly" && (
+                  <div className="repeat-days">
+                    {[
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                      "Sunday"
+                    ].map(day => (
+                      <label key={day}>
+                        <input
+                          type="checkbox"
+                          value={day}
+                          checked={repeatDays.includes(day)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setRepeatDays([...repeatDays, day]);
+                            } else {
+                              setRepeatDays(
+                                repeatDays.filter(d => d !== day)
+                              );
+                            }
+                          }}
+                        />
+
+                        {day}
+                      </label>
+                    ))}
+                  </div>
+                )}
+
+
+                {/* MONTHLY */}
+                {recurring === "monthly" && (
+                  <select
+                    value={repeatDate}
+                    onChange={(e) => setRepeatDate(Number(e.target.value))}
+                  >
+                    <option value="">Select date</option>
+
+                    {Array.from({ length: 31 }, (_, i) => (
+                      <option key={i + 1} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                <button className='ripple-btn addtaskbtn'
                   onClick={() => {
                     addTask();
                     setShowModal(false);
@@ -401,7 +496,7 @@ function App() {
                 <div className='searchtaskbtn'>
 
                   <button
-                    onClick={setSearchf}>Search</button>
+                    onClick={() => { setSearchf() }}>Search</button>
                 </div>
               </div>
               <ul>
@@ -469,7 +564,10 @@ function App() {
                                 </span>
 
                                 <span className="tasktime">
-                                  ⏰ {t.time}
+                                  ⏰ {new Date(t.time).toLocaleTimeString("en-PK", {
+                                    hour: "2-digit",
+                                    minute: "2-digit"
+                                  })}
                                 </span>
 
                               </div>
@@ -484,7 +582,11 @@ function App() {
                               {status}
                             </p>
 
-                            <div className='taskbtns'> <button onClick={() => { deletetask(t._id) }}>🗑</button> <button onClick={() => getAISuggestion(t.task)}>✨</button> {aiSuggestion && (<div className="ai-box"> ✨ {aiSuggestion}</div>)} <button onClick={() => { setEditTask(t.task); setEditTime(t.time); setCurrentId(t._id); setEditModal(true); }}>✏</button> </div>
+                            <div className='taskbtns'> 
+                            <button onClick={() => setDeleteTaskId(t._id)}>
+  🗑️
+</button>
+                            <button onClick={() => getAISuggestion(t.task)}>✨</button> {aiSuggestion && (<div className="ai-box"> ✨ {aiSuggestion}</div>)} <button onClick={() => { setEditTask(t.task); setEditTime(t.time); setCurrentId(t._id); setEditModal(true); }}>✏</button> </div>
                           </div>
 
                         </div>
@@ -492,12 +594,39 @@ function App() {
                   })}
               </ul>
 
-
-
             </div>
           )}
+{deleteTaskId && (
+  <div className="delete-toast">
+    <div>
+      <strong>Delete this task?</strong>
+      <p>This action cannot be undone.</p>
+    </div>
 
-          {page === "analytics" && <Analytics tasks={tasks} todaytasks={todaytasks} time={time} />}
+    <div className="delete-actions">
+      <button
+        className="cancel-delete"
+        onClick={() => setDeleteTaskId(null)}
+      >
+        Cancel
+      </button>
+
+      <button
+        className="confirm-delete"
+        onClick={() => {
+          deletetask(deleteTaskId);
+          setDeleteTaskId(null);
+        }}
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+)}
+          {page === "analytics" && <Analytics tasks={tasks} todaytasks={todaytasks} time={time} isloginuser={isloginuser} setPage={setPage} />}
+          {page === "goal" && <Goal isloginuser={isloginuser}></Goal>}
+          {page === "Ai" && <Ai isloginuser={isloginuser} setPage={setPage}></Ai>}
+
         </div>
       </div>
     );

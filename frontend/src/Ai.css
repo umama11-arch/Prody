@@ -1,0 +1,260 @@
+.ai-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 40px 50px;
+  box-sizing: border-box;
+  color: var(--text);
+}
+
+
+/* =========================
+   MENTOR
+========================= */
+
+.mentor-btn {
+  display: block;
+  margin: 0 auto 22px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--bg);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.mentor-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   AI CARDS
+========================= */
+
+.ai-insights {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+   margin: 15px 0 25px;
+  padding: 24px 28px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: var(--shadow);
+  line-height: 1.7;
+}
+
+.ai-insights h1,
+.ai-insights h2,
+.ai-insights h3 {
+  color: var(--primary);
+}
+
+.ai-insights p {
+  color: var(--muted);
+}
+
+
+/* =========================
+   CHAT
+========================= */
+
+.chat-input {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  margin: 25px 0 20px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.chat-input button {
+  padding: 0 22px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--bg);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background: var(--primary-hover);
+}
+
+
+/* =========================
+   GENERATE ROUTINE
+========================= */
+
+.generate-routine-btn {
+  display: block;
+  margin: 28px auto;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--primary-border);
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.generate-routine-btn:hover {
+  background: var(--primary);
+  color: var(--bg);
+}
+
+
+/* =========================
+   ROUTINE
+========================= */
+
+.routine-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.routine-task {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: 0.2s ease;
+}
+
+.routine-task:hover {
+  background: var(--card-hover);
+  border-color: var(--border-strong);
+}
+
+.routine-task h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+}
+
+.routine-task p {
+  margin: 5px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+
+/* =========================
+   ROUTINE ACTIONS
+========================= */
+
+.routine-actions {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.approve-btn,
+.modify-btn {
+  padding: 11px 18px;
+  border-radius: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.approve-btn {
+  border: none;
+  background: var(--success);
+  color: var(--bg);
+}
+
+.modify-btn {
+  border: 1px solid var(--border-strong);
+  background: var(--card-hover);
+  color: var(--text);
+}
+
+.approve-btn:hover,
+.modify-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   MODIFY
+========================= */
+
+.modify-textbox {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0 25px;
+  padding: 15px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.modify-input {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text);
+  outline: none;
+}
+
+.modify-input:focus {
+  border-color: var(--primary);
+}
+
+.modify-submit {
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--bg);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+.back-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.back-analytics-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.back-analytics-btn:hover {
+  color: var(--primary);
+}

@@ -21,6 +21,8 @@ const Sidebar = ({tasks,setFilter,setPage,setShowModal,signout,dark,setDark}) =>
 <button className='sidebarbtn' onClick={() => setPage("analytics")}>
   Analytics
 </button>
+<button className='sidebarbtn' onClick={()=>{setPage("goal")}}>Goals</button>
+<button className='sidebarbtn' onClick={()=>{setPage("Ai")}}>AI mentor</button>
  <button
 className="theme-toggle"
 onClick={() => setDark(!dark)}

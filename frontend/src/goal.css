@@ -1,0 +1,222 @@
+/* ================= GOAL PAGE ================= */
+
+.goal-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+
+  padding: 28px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  color: var(--text);
+}
+
+
+/* ================= GOAL FORM ================= */
+
+.goal-form {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+
+  padding: 22px;
+
+  box-sizing: border-box;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .04);
+}
+
+
+/* ================= INPUTS ================= */
+
+.goal-title,
+.goal-desc,
+.goal-duration,
+.goal-durationunit {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border);
+  border-radius: 11px;
+
+  background: var(--card);
+  color: var(--text);
+
+  outline: none;
+
+  font-size: 13px;
+
+  transition: .2s ease;
+}
+
+.goal-title::placeholder,
+.goal-desc::placeholder {
+  color: var(--muted);
+}
+
+.goal-title:focus,
+.goal-desc:focus,
+.goal-duration:focus,
+.goal-durationunit:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, .08);
+}
+
+
+/* Description gets more space */
+
+.goal-desc {
+  min-height: 44px;
+}
+
+
+/* ================= CREATE BUTTON ================= */
+
+.goal-form button {
+  grid-column: 1 / -1;
+
+  justify-self: flex-start;
+
+  padding: 11px 20px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+.goal-form button:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 6px 16px rgba(99, 102, 241, .18);
+}
+
+.goal-form button:active {
+  transform: scale(.97);
+}
+
+
+/* ================= GOAL SELECT ================= */
+
+.goal-select {
+  width: 100%;
+
+  padding: 22px;
+
+  box-sizing: border-box;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, .04);
+}
+
+.goal-select-heading {
+  margin: 0 0 16px;
+
+  color: var(--text);
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+
+/* ================= GOAL LIST ================= */
+
+.goal-list {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.goal-list button {
+  width: 100%;
+
+  padding: 13px 15px;
+
+  text-align: left;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: rgba(148, 163, 184, .05);
+  color: var(--text);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+.goal-list button:hover {
+  border-color: var(--primary);
+
+  background: rgba(99, 102, 241, .07);
+
+  transform: translateY(-1px);
+}
+
+.goal-list button:active {
+  transform: scale(.98);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .goal-container {
+    padding: 18px 15px;
+    gap: 16px;
+  }
+
+  .goal-form,
+  .goal-select {
+    padding: 18px;
+    border-radius: 17px;
+  }
+
+  .goal-form {
+    grid-template-columns: 1fr;
+  }
+
+  .goal-form button {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .goal-list {
+    grid-template-columns: 1fr;
+  }
+
+}

@@ -1,0 +1,14 @@
+### LeetCode 835 — Algorithm Steps
+
+1. `img1` aur `img2` ke **saare `1` coordinates** identify karo.
+2. `img1` ke har `1` ko `img2` ke har `1` ke saath pair karo.
+3. Har pair ke liye shift calculate karo:
+
+   * `rowShift = row2 - row1`
+   * `colShift = col2 - col1`
+4. `(rowShift, colShift)` ko **ek single shift** samjho.
+5. Map mein us shift ki frequency increment karo.
+6. Har increment ke baad maximum frequency maintain karo.
+7. **Maximum frequency = maximum overlap.**
+
+**Complexity:** `O(n⁴)` time, `O(n²)` space.
