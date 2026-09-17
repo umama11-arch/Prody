@@ -96,7 +96,7 @@ function Auth({setislogin,setisloginuser}) {
             />
 
             <button onClick={isSignup ? SignUp : login}>
-                {isSignup ? "Signup" : "Login"}
+            
             </button>
 
             <p onClick={() => setIsSignup(!isSignup)}>
