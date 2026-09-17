@@ -9,6 +9,7 @@
     "jsonwebtoken": "^9.0.3",
     "mongodb": "^7.5.0",
     "mongoose": "^9.6.1",
+    "node-cron": "^4.6.0",
     "openai": "^6.49.0",
     "react-markdown": "^10.1.0",
     "schema": "^0.2.1"
