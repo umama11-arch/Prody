@@ -56,7 +56,7 @@ function App() {
 
       try {
 
-        const res = await axios.get(`${API_URL}/reminders`,
+        const res = await axios.get(`${API_URL}reminders`,
           {
             params: {
               userid: isloginuser
@@ -215,7 +215,7 @@ function App() {
   const completetasks = async (id, completed) => {
     const date = new Date()
     await axios.put(
-      `${API_URL}/completetask/${id}`,
+      `${API_URL}completetask/${id}`,
       {
         completed: true,
         // completed: !completed,
@@ -235,7 +235,7 @@ function App() {
     setLoading(false);
     return;
   }
-    await axios.post(`${API_URL}/addtask`, {
+    await axios.post(`${API_URL}addtask`, {
       task: task,
       time: time,
       priority: priority,
@@ -261,18 +261,18 @@ function App() {
 
 
   const displaytask = async () => {
-    const res = await axios.get(`${API_URL}/displaytask?userid=${isloginuser}`)
+    const res = await axios.get(`${API_URL}displaytask?userid=${isloginuser}`)
     setTasks(res.data);
   }
  
   const deletetask = async (id) => {
-    await axios.delete(`${API_URL}/deletetask/${id}`);
+    await axios.delete(`${API_URL}deletetask/${id}`);
     toast.success("Task deleted")
     gettodaytask()
   }
 
   const updateTask = async () => {
-    await axios.put(`${API_URL}/updatetask/${currentId}`, {
+    await axios.put(`${API_URL}updatetask/${currentId}`, {
       task: editTask,
       time: editTime
     });
@@ -283,7 +283,7 @@ function App() {
 
   // const islogin=false;  
   const setSearchf = async () => {
-    const res = await axios.get(`${API_URL}/searchtask?`, {
+    const res = await axios.get(`${API_URL}searchtask?`, {
       params: {
         query: search,
         userid: isloginuser
