@@ -22,7 +22,7 @@ const [goalAnalytics,setgoalAnalytics]=useState([])
 getgoal();
 }, []);
 const getweeklyreports=async()=>{
-  const res=await axios.get(`${API_URL}/getweeklyreport/${isloginuser}`)
+  const res=await axios.get(`${API_URL}getweeklyreport/${isloginuser}`)
   return res.data;
 }
 
@@ -85,7 +85,7 @@ const loadReports = async () => {
     const SubmitEvent = async (e) => {
 
         e.preventDefault();
-        await axios.post(`${API_URL}/setgoal`, {
+        await axios.post(`${API_URL}setgoal`, {
             title: title,
             description: desc,
             duration: Duration,
@@ -109,7 +109,7 @@ const loadReports = async () => {
     };
 
     const getgoal=async()=>{
-        const res=await axios.get(`${API_URL}/getgoal?userid=${isloginuser}`)
+        const res=await axios.get(`${API_URL}getgoal?userid=${isloginuser}`)
         setgoal(res.data)
     }
 

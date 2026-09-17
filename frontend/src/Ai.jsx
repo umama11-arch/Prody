@@ -27,7 +27,7 @@ useEffect(() => {
 const getlastweeklyreports = async () => {
 
   const res = await axios.get(
-    `${API_URL}/getlastweeklyreport/${isloginuser}`
+    `${API_URL}getlastweeklyreport/${isloginuser}`
   );
   
   return res.data;
@@ -36,7 +36,7 @@ const getlastweeklyreports = async () => {
 
 const currentmonthproductivity=async()=>{
   const res = await axios.get(
-    `${API_URL}/currmonthpro/${isloginuser}`
+    `${API_URL}currmonthpro/${isloginuser}`
   );
   return res.data;
 };
@@ -44,11 +44,11 @@ const currentmonthproductivity=async()=>{
 
 const getAllProductivity = async () => {
   const res = await axios.get(
-    `${API_URL}/allproductivity/${isloginuser}`
+    `${API_URL}allproductivity/${isloginuser}`
   );
 const getallproductivity = async () => {
   const res = await axios.get(
-    `${API_URL}/getallproductivity/${isloginuser}`
+    `${API_URL}getallproductivity/${isloginuser}`
   );
 
   return res.data;
@@ -161,7 +161,7 @@ const currentmonthaverage=async()=>{
 }
 
 const getweeklyreports=async()=>{
-  const res=await axios.get(`${API_URL}/getweeklyreport/${isloginuser}`)
+  const res=await axios.get(`${API_URL}getweeklyreport/${isloginuser}`)
   return res.data;
 }
 
@@ -215,7 +215,7 @@ productivedays === 0
     : sum / productivedays;
 
     const getgoal=async()=>{
-            const res=await axios.get(`${API_URL}/getgoal?userid=${isloginuser}`)
+            const res=await axios.get(`${API_URL}getgoal?userid=${isloginuser}`)
             return res.data;
         };
     const goalreport = async () => {
@@ -420,9 +420,9 @@ const sendMessage = async () => {
   if (!userMessage.trim()) return;
 
   try {
-    console.log("past response is ",interactionId)
+    
     const res = await axios.post(
-      `${API_URL}/ai-chat`,
+      `${API_URL}ai-chat`,
       {
         isloginuser,
         interactionId: interactionId,
@@ -430,18 +430,18 @@ const sendMessage = async () => {
       }
     );
 
-    console.log("AI CHAT RESPONSE:", res.data);
+  
     setUserMessage("");
     setAIreply(res.data.response);
   } catch (error) {
-    console.log("CHAT ERROR:", error);
+  
   }
 };
  const approveRoutine = async () => {
   try {
     for (const task of airoutine) {
       
-      await axios.post(`${API_URL}/addtask`, {
+      await axios.post(`${API_URL}addtask`, {
         ...task,
         userid: isloginuser
       });
@@ -480,7 +480,7 @@ const generateRoutine = async() => {
     ,isloginuser:isloginuser
   };
 console.log(isloginuser,"is clicked")
-  const res=await axios.post(`${API_URL}/generate-routine`,{
+  const res=await axios.post(`${API_URL}generate-routine`,{
     interactionId,
     aiData
   })
@@ -501,7 +501,7 @@ return routine;
   }
 
   const res = await axios.post(
-    `${API_URL}/modify-routine`,
+    `${API_URL}modify-routine`,
     { modifytext, isloginuser, routine }
   );
 setairoutine([])
@@ -513,7 +513,6 @@ setairoutine([])
 
   return modifiedRoutine;
 };
-  console.log("hello guys",localStorage.getItem("routine"))
 
 
 

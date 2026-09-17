@@ -119,7 +119,7 @@ function getLocalDayKey(dateObj) {
 // this month productivity 
 const currentmonthproductivity=async()=>{
   const res = await axios.get(
-    `${API_URL}/currmonthpro/${isloginuser}`
+    `${API_URL}currmonthpro/${isloginuser}`
   );
   return res.data;
 }
@@ -150,7 +150,7 @@ setcalendarData(calendar)
 
 const getallproductivity = async () => {
   const res = await axios.get(
-    `${API_URL}/getallproductivity/${isloginuser}`
+    `${API_URL}getallproductivity/${isloginuser}`
   );
 
   return res.data;
@@ -265,7 +265,7 @@ for (let day = 1; day <= daysInMonth; day++) {
 const getlastweeklyreports = async () => {
 
   const res = await axios.get(
-    `${API_URL}/getlastweeklyreport/${isloginuser}`
+    `${API_URL}getlastweeklyreport/${isloginuser}`
   );
   
   return res.data;
@@ -285,7 +285,6 @@ if (reports.length === 0) {
   },0)
   const averageproductivity=reports.length===0?0:sum/reports.length;
   setlastweekproductivity(averageproductivity);
-  console.log("i am average productivity",(averageproductivity,"%"));
   
   
   const bestWorst = reports.reduce(
@@ -335,7 +334,7 @@ const worstDay = new Date(bestWorst.worst.date).toLocaleDateString(
 }
 loadlastweekreports()
 const getweeklyreports=async()=>{
-  const res=await axios.get(`${API_URL}/getweeklyreport/${isloginuser}`)
+  const res=await axios.get(`${API_URL}getweeklyreport/${isloginuser}`)
   return res.data;
 }
 
@@ -403,13 +402,13 @@ productivedays === 0
 
 const getAllProductivity = async () => {
   const res = await axios.get(
-    `${API_URL}/allproductivity/${isloginuser}`
+    `${API_URL}allproductivity/${isloginuser}`
   );
 
   return res.data;
 };
   const getgoal=async()=>{
-        const res=await axios.get(`${API_URL}/getgoal?userid=${isloginuser}`)
+        const res=await axios.get(`${API_URL}getgoal?userid=${isloginuser}`)
         return res.data;
     };
 const goalreport = async () => {
@@ -572,7 +571,6 @@ return goalData
   console.log("data",goalData);
 };
 
-console.log("i am ",isloginuser)
 const monthName = new Date(2026, currentMonth ).toLocaleString("en-US", {
   month: "long"
 });
