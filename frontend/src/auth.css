@@ -39,9 +39,11 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background:var(--card);
+    border: 1px solid var(--border);
     backdrop-filter: blur(12px);
+     box-shadow: var(--shadow);
+
 }
 
 .box h2 {
@@ -50,11 +52,13 @@
 }
 
 .box input {
+   background: var(--input-bg);
+    color: var(--text);
+    border: 1px solid var(--input-border);
     width: 100%;
     box-sizing: border-box;
     padding: 14px 16px;
     border-radius: 12px;
-    border: 1px solid #ccc;
     outline: none;
     font-size: 15px;
 }
@@ -65,10 +69,10 @@
 
 .box button {
     padding: 14px;
+    background: var(--primary);
+    color: #0b0f0e;
     border: none;
     border-radius: 12px;
-    background: #2dd4bf;
-    color: #111;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
@@ -76,7 +80,8 @@
 }
 
 .box button:hover {
-    transform: translateY(-2px);
+ background: var(--primary-hover);
+  transform: translateY(-2px);
 }
 
 .box p {
