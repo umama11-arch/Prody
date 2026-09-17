@@ -101,8 +101,8 @@ function Auth({setislogin,setisloginuser}) {
 
             <p onClick={() => setIsSignup(!isSignup)}>
                 {isSignup
-                    ? "Already have an account? Login"
-                    : "New here? Signup"}
+                    ? "Already Grinding? Login"
+                    : "Wanna Slay? Signup"}
             </p>
         </div>
 
