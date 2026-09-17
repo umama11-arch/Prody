@@ -18,7 +18,7 @@ app.use(express.json())
 const cors = require("cors");
 app.use(cors({
   origin: "https://prody-gamma.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE"],                            
   credentials: true
 }));
 const authRoutes = require("./authlogic");
