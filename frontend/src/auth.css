@@ -91,7 +91,9 @@
     cursor: pointer;
     opacity: 0.75;
 }
-
+h3{
+  color: var(--text);
+}
 .box p:hover {
     opacity: 1;
 }
