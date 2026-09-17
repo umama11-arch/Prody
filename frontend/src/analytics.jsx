@@ -32,8 +32,8 @@ const [showstreak, setshowstreak] = useState(false);
 
  const [lastweekproductivity,setlastweekproductivity]=useState(0)
  const [calendarData,setcalendarData]=useState([])
- const API_URL = "http://localhost:4000";
- 
+ const API_URL = process.env.REACT_APP_API_URL;
+
   // BASIC STATS
   const completed = todaytasks.filter((t) => t.completed).length;
 

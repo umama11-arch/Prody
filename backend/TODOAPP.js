@@ -28,7 +28,7 @@ app.use("/auth", authRoutes);
 const mongoose = require("mongoose")
 const connectdb = async () => {
   try {
-    await mongoose.connect("mongodb://Database:Umamagujranwaladatabase@ac-3zlwmit-shard-00-00.mq3g4jf.mongodb.net:27017,ac-3zlwmit-shard-00-01.mq3g4jf.mongodb.net:27017,ac-3zlwmit-shard-00-02.mq3g4jf.mongodb.net:27017/?ssl=true&replicaSet=atlas-b4fj1j-shard-0&authSource=admin&appName=Databasefirst")
+    await mongoose.connect(process.env.MONGODB_URI)
     console.log("DB connected")
   } catch (error) {
     console.log("Not connected ", error)

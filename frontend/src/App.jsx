@@ -38,10 +38,8 @@ function App() {
   const [dark, setDark] = useState(false)
   const [recurring, setrecurring] = useState("none")
   const API_URL = process.env.REACT_APP_API_URL;
-  console.log("API_URL",API_URL)
 
   // console.log(activegoal)
-  console.log("i am from  localstorage", localStorage.getItem("activegoal"))
   console.log(isloginuser)
   useEffect(() => {
     if ("Notification" in window) {

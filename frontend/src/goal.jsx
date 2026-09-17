@@ -13,7 +13,9 @@ const [goalAnalytics,setgoalAnalytics]=useState([])
     const [desc, setdisc] = useState("");
     const [Duration, setDuration] = useState(1);
     const [goalname,setgoalname]=useState("")
-     const API_URL = "http://localhost:4000";
+    const API_URL = process.env.REACT_APP_API_URL;
+
+  
  
     const [goal,setgoal]=useState([])
     useEffect(() => {

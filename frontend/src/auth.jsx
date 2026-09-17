@@ -10,9 +10,11 @@ function Auth({setislogin,setisloginuser}) {
     // LOGIN
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
+    const API_URL = process.env.REACT_APP_API_URL;
+
     const SignUp = async () => {
         try {
-            await axios.post("http://localhost:4000/AUTH/signup", {
+            await axios.post(`${API_URL}/AUTH/signup`, {
                 username: signupUsername,
                 password: signupPassword
             });
@@ -32,7 +34,7 @@ function Auth({setislogin,setisloginuser}) {
     const login = async () => {
         try {
             
-            const res = await axios.post("http://localhost:4000/AUTH/login", {
+            const res = await axios.post(`${API_URL}/AUTH/login`, {
                 username: loginUsername,
                 password: loginPassword,
             });
