@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState} from "react";
 import "./auth.css"
 function Auth({setislogin,setisloginuser}) {
+    const [isSignup, setIsSignup] = useState(true);
 
     // SIGNUP
     const [signupUsername, setSignupUsername] = useState("");
@@ -60,56 +61,54 @@ function Auth({setislogin,setisloginuser}) {
     };
 
     return (
-        <div className="auth-page">
-            <div className="loginorsignup light">
 
-<h1>TO DO APP </h1>
-{/* <h3>Are you new or just want to login?</h3> */}
-            </div>
-<div className="boxes">
+<div className="auth-page">
+
+    <div className="loginorsignup light">
+        <h1>Prody</h1>
+        <h3>Have a goal? Stay locked in.</h3>
+    </div>
+
+    <div className="boxes">
+
         <div className="box">
-
-            <h2>Signup</h2>
+            <h2>{isSignup ? "Signup" : "Login"}</h2>
 
             <input
-                value={signupUsername}
+                value={isSignup ? signupUsername : loginUsername}
                 placeholder="Enter username"
-                onChange={(e) => setSignupUsername(e.target.value)}
-                />
+                onChange={(e) =>
+                    isSignup
+                        ? setSignupUsername(e.target.value)
+                        : setLoginUsername(e.target.value)
+                }
+            />
 
             <input
-                value={signupPassword}
+                value={isSignup ? signupPassword : loginPassword}
                 placeholder="Enter password"
                 type="password"
-                onChange={(e) => setSignupPassword(e.target.value)}
-                />
+                onChange={(e) =>
+                    isSignup
+                        ? setSignupPassword(e.target.value)
+                        : setLoginPassword(e.target.value)
+                }
+            />
 
-            <button onClick={SignUp}>Signup</button>
+            <button onClick={isSignup ? SignUp : login}>
+                {isSignup ? "Signup" : "Login"}
+            </button>
 
-
-                </div>
-
-                <div className="box">
-
-            <h2>Login</h2>
-
-            <input
-                value={loginUsername}
-                placeholder="Enter username"
-                onChange={(e) => setLoginUsername(e.target.value)}
-                />
-
-            <input
-                value={loginPassword}
-                placeholder="Enter password"
-                type="password"
-                onChange={(e) => setLoginPassword(e.target.value)}
-                />
-            <button onClick={login}>Login</button>
-
-                </div>
+            <p onClick={() => setIsSignup(!isSignup)}>
+                {isSignup
+                    ? "Already have an account? Login"
+                    : "New here? Signup"}
+            </p>
         </div>
-                </div>
+
+    </div>
+</div>
+
     );
 }
 

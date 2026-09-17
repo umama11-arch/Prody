@@ -2,129 +2,92 @@
 
 /* AUTH PAGE WRAPPER */
 .auth-page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px;
-  box-sizing: border-box;
-
-  background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
 }
 
-/* HEADER */
 .loginorsignup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .loginorsignup h1 {
-  font-size: 56px;
-  margin: 0;
-  color: var(--text);
+    font-size: 52px;
+    margin: 0 0 8px;
+    font-weight: 800;
 }
 
-.loginorsignup p {
-  color: var(--muted);
+.loginorsignup h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    opacity: 0.75;
 }
 
-/* BOX WRAPPER */
 .boxes {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
-  flex-wrap: wrap;
+    width: 100%;
+    max-width: 420px;
 }
 
-/* CARD */
 .box {
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 36px;
-  width: 400px;
-  min-height: 340px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-
-  transition: 0.25s ease;
-  backdrop-filter: blur(10px);
+    padding: 35px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
 }
 
-
-.box:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary);
-}
-
-/* TITLE */
 .box h2 {
-  text-align: center;
-  margin: 0;
-  color: var(--text);
+    margin: 0 0 10px;
+    font-size: 28px;
 }
 
-/* INPUT FIX (IMPORTANT) */
 .box input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-
-  outline: none;
-  margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 15px;
 }
 
 .box input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+    border-color: #2dd4bf;
 }
 
-/* BUTTON */
 .box button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-
-  background: var(--primary);
-  color: white;
-
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-
-  transition: 0.2s ease;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #2dd4bf;
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .box button:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .boxes {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .loginorsignup h1 {
-    font-size: 40px;
-  }
-
-  .box {
-    width: 90%;
-  }
+.box p {
+    text-align: center;
+    margin: 5px 0 0;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0.75;
 }
+
+.box p:hover {
+    opacity: 1;
+}
+
