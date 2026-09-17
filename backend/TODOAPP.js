@@ -17,7 +17,7 @@ app.use(express.json())
 
 const cors = require("cors");
 app.use(cors({
-  origin: "https://prody-k6aucoota-umama-ishaq-s-projects.vercel.app",
+  origin: "https://prody-9kad04766-umama-ishaq-s-projects.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],                            
   credentials: true
 }));
