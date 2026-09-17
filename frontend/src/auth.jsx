@@ -33,7 +33,6 @@ function Auth({setislogin,setisloginuser}) {
     
     const login = async () => {
         try {
-            
             const res = await axios.post(`${API_URL}AUTH/login`, {
                 username: loginUsername,
                 password: loginPassword,
