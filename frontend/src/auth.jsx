@@ -72,7 +72,7 @@ function Auth({setislogin,setisloginuser}) {
     <div className="boxes">
 
         <div className="box">
-            <h2>{isSignup ? "Signup" : "Login"}</h2>
+        
 
             <input
                 value={isSignup ? signupUsername : loginUsername}
@@ -96,7 +96,7 @@ function Auth({setislogin,setisloginuser}) {
             />
 
             <button onClick={isSignup ? SignUp : login}>
-            
+                {isSignup ? "Signup" : "Login"}
             </button>
 
             <p onClick={() => setIsSignup(!isSignup)}>
