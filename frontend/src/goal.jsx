@@ -30,7 +30,7 @@ const loadReports = async () => {
   const reports = await getweeklyreports();
 
   const goalRes = await axios.get(
-    `${API_URL}/getgoal?userid=${isloginuser}`
+    `${API_URL}getgoal?userid=${isloginuser}`
   );
 
   const goals = goalRes.data;
