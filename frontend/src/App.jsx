@@ -241,7 +241,7 @@ console.log(todayRate)
       }
     );
 
-    await displaytask();
+    await gettodaytask();
   }
 
   const addTask = async () => {
