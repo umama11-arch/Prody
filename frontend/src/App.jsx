@@ -10,7 +10,11 @@ import Goal from './goal'
 // import user from './user
 // ';
 function App() {
+  const [goalAnalytics,setgoalAnalytics]=useState([])
+      const [goal,setgoal]=useState([])
   const [deleteTaskId, setDeleteTaskId] = useState(null);
+  const [averageproductiviti,setaverageproductiviti]=useState(0)
+  const [monthName,setmonthName]=useState("")
   const [repeatDate, setRepeatDate] = useState("");
   const [repeatDays, setRepeatDays] = useState([]);
   const [todaytasks, setTodayTasks] = useState([]);
@@ -37,8 +41,22 @@ function App() {
   const [reminderTime, setremainderTime] = useState(1)
   const [dark, setDark] = useState(false)
   const [recurring, setrecurring] = useState("none")
+  const [currmonth,setcurrmonth]=useState(0)
+   const [currdays,setcurrdays]=useState(0);
   const API_URL = process.env.REACT_APP_API_URL;
 
+
+  const completed = todaytasks.filter((t) => t.completed).length;
+
+  const pending = todaytasks.length - completed;
+
+  const todayCompleted = todaytasks.filter((t) => t.completed).length;
+
+  const todayTotal = todaytasks.length;
+  console.log("todsym total",todayTotal)
+
+  const todayRate =todayTotal === 0? 0: ((todayCompleted / todayTotal) * 100).toFixed(1);
+console.log(todayRate)
   // console.log(activegoal)
   console.log(isloginuser)
   useEffect(() => {
@@ -181,7 +199,7 @@ function App() {
       setLoading(true)
       const res =
         await axios.get(
-          `${API_URL}/todaytask`,
+          `${API_URL}todaytask`,
           {
             params: {
               userid: isloginuser
@@ -480,10 +498,97 @@ function App() {
 
             <div className='dashboard'>
               <div className='header'>
-                <h2>Welcome back 👋
-                  Manage your productivity today</h2>
-              </div>
+                <div className='upper-header'>
 
+<h2>
+  WELCOME TO THE GRIND 👋
+  <br />
+  <span>Manage your productivity today</span>
+</h2>
+                </div>
+                  <button
+  className="ai-mentors-btn"
+  onClick={() => {
+    console.log("BUTTON CLICKED");
+    setPage("Ai");
+  }}
+>
+  🤖
+</button>
+              </div>
+<div className='card-row'>
+  <div className="card highlight">
+        <h4>{monthName} Productivity</h4>
+
+        <h1>
+        {(currmonth || 0).toFixed(1)}%
+        </h1>
+
+        <p>
+          {currdays || 0} productive days
+        </p>
+
+      </div>
+
+
+      <div className="card">
+
+        <h4>Today</h4>
+
+        <h1>{todayRate}%</h1>
+
+        <p>
+          {todayCompleted} / {todayTotal} tasks
+        </p>
+
+      </div>
+
+ <div className="card">
+
+        <h4>Average Productivity of this week</h4>
+
+        <h1>{averageproductiviti}%</h1>
+
+       
+      </div>
+</div>
+<div>
+
+</div>
+<div className="goals-section">
+  <div className="goals-header">
+    <h3>Your Goals</h3>
+    <span>Weekly progress</span>
+  </div>
+
+  <div className="goals-list">
+    {goalAnalytics.length === 0 ? (
+      <p className="no-goals">No goals yet. Set one and lock in 🎯</p>
+    ) : (
+      goalAnalytics.map((goal) => (
+        <div className="goal-card" key={goal.goalid}>
+          <div className="goal-top">
+            <h4>{goal.title}</h4>
+            <span>
+              {goal.weeklyAverage === null
+                ? "0%"
+                : `${goal.weeklyAverage.toFixed(1)}%`}
+            </span>
+          </div>
+
+          <div className="goal-progress">
+            <div
+              className="goal-progress-fill"
+              style={{
+                width: `${goal.weeklyAverage ?? 0}%`
+              }}
+            />
+          </div>
+        </div>
+      ))
+    )}
+  </div>
+</div>
               <div className='searchtaskcard'>
                 <h3>Search task</h3>
                 <input type='text'
@@ -621,8 +726,8 @@ function App() {
     </div>
   </div>
 )}
-          {page === "analytics" && <Analytics tasks={tasks} todaytasks={todaytasks} time={time} isloginuser={isloginuser} setPage={setPage} />}
-          {page === "goal" && <Goal isloginuser={isloginuser}></Goal>}
+          {page === "analytics" && <Analytics tasks={tasks} todaytasks={todaytasks} time={time} isloginuser={isloginuser} setPage={setPage} setcurrdays={setcurrdays} setcurrmonth={setcurrmonth} setmonthName={setmonthName} setaverageproductiviti={setaverageproductiviti} />}
+          {page === "goal" && <Goal isloginuser={isloginuser} goal={goal} setgoal={setgoal} goalAnalytics={goalAnalytics} setgoalAnalytics={setgoalAnalytics}></Goal>}
           {page === "Ai" && <Ai isloginuser={isloginuser} setPage={setPage}></Ai>}
 
         </div>

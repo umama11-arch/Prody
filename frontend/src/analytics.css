@@ -1056,15 +1056,11 @@
   margin: 24px 0 32px;
   padding: 18px 22px;
 
-  background: rgba(15, 23, 42, 0.96);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: var(--card);
+  border: 1px solid var(--primary-border);
   border-radius: 16px;
 
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.18),
-    0 0 25px rgba(99, 102, 241, 0.08);
-
-  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
 }
 
 .ai-mentor-info {
@@ -1082,45 +1078,38 @@
   justify-content: center;
 
   border-radius: 12px;
-
-  background: rgba(99, 102, 241, 0.14);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-border);
 
   font-size: 22px;
 }
 
 .ai-mentor-info h3 {
   margin: 0 0 4px;
-
   font-size: 16px;
   font-weight: 600;
-
-  color: #f8fafc;
+  color: var(--text);
 }
 
 .ai-mentor-info p {
   margin: 0;
-
   font-size: 13px;
   line-height: 1.4;
-
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .ai-mentor-btn {
   flex-shrink: 0;
 
   padding: 11px 18px;
-
-  border: none;
+  border: 1px solid var(--primary-border);
   border-radius: 10px;
 
-  background: #6366f1;
-  color: white;
+  background: var(--primary-soft);
+  color: var(--primary);
 
   font-size: 14px;
   font-weight: 600;
-
   cursor: pointer;
 
   transition:
@@ -1130,18 +1119,15 @@
 }
 
 .ai-mentor-btn:hover {
-  background: #4f46e5;
-
+  background: var(--primary);
+  color: #06100d;
   transform: translateY(-1px);
-
-  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 6px 18px rgba(45, 212, 191, 0.2);
 }
 
 .ai-mentor-btn:active {
   transform: translateY(0);
 }
-
-
 /* ================= MOBILE ================= */
 
 @media (max-width: 700px) {

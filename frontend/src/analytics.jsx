@@ -15,7 +15,7 @@ import Goal from "./goal";
 import Ai from "./Ai";
 // import { replaceTooltipEntrySettings } from "recharts/types/state/tooltipSlice";
 
-const Analytics = ({ tasks = [], todaytasks = [] ,isloginuser,setPage}) => {
+const Analytics = ({ tasks = [], todaytasks = [] ,isloginuser,setPage,setcurrdays,setcurrmonth,setmonthName,setaverageproductiviti}) => {
   const [chartData, setChartData] = useState([]);
   const [currentStreak, setCurrentStreak] = useState(0);
 const [bestStreak, setBestStreak] = useState(0);
@@ -27,8 +27,7 @@ const [showstreak, setshowstreak] = useState(false);
   const [monthlyProductivity, setMonthlyProductivity] = useState([]);
   const [day,setday]=useState("");
   const [maximum,setmaximum]=useState(0);
- const [currmonth,setcurrmonth]=useState(0)
- const [currdays,setcurrdays]=useState(0);
+
 
  const [lastweekproductivity,setlastweekproductivity]=useState(0)
  const [calendarData,setcalendarData]=useState([])
@@ -388,7 +387,7 @@ productivedays === 0
     ? 0
     : sum / productivedays;
     
-    
+  setaverageproductiviti(averageproductivity)
     useEffect(()=>{
       loadReports()  
       loadlastweekreports()
@@ -574,7 +573,7 @@ return goalData
 const monthName = new Date(2026, currentMonth ).toLocaleString("en-US", {
   month: "long"
 });
-
+setmonthName(monthName)
 
 // const cuurentmonthproductivity=currentMonth.productivity;
 // console.log("data shown",currentMonth)
@@ -629,19 +628,6 @@ return (
     </div>
 
     <div className="card-row">
-
-      <div className="card highlight">
-        <h4>{monthName} Productivity</h4>
-
-        <h1>
-          {(currmonth || 0).toFixed(1)}%
-        </h1>
-
-        <p>
-          {currdays || 0} productive days
-        </p>
-
-      </div>
 
 
       <div className="card">

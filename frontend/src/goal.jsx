@@ -3,11 +3,11 @@ import axios from "axios";
 import "./goal.css"
 import { useEffect } from "react";
 
-function Goal({ isloginuser }) {
+function Goal({ isloginuser ,goal,setgoal,goalAnalytics,setgoalAnalytics}) {
   useEffect(()=>{
     loadReports();
   })
-const [goalAnalytics,setgoalAnalytics]=useState([])
+
     const [Durationunit, setDurationunit] = useState("");
     const [title, settitle] = useState("");
     const [desc, setdisc] = useState("");
@@ -17,7 +17,7 @@ const [goalAnalytics,setgoalAnalytics]=useState([])
 
   
  
-    const [goal,setgoal]=useState([])
+
     useEffect(() => {
 getgoal();
 }, []);
