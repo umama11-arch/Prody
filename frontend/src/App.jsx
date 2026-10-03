@@ -666,13 +666,11 @@ console.log(todayRate)
                                   📁 {t.category || "General"}
                                 </span>
 
-                                <span className="tasktime">
-                                  ⏰ {new Date(t.time).toLocaleTimeString("en-PK", {
-                                    hour: "2-digit",
-                                    minute: "2-digit"
-                                  })}
-                                </span>
-
+                                  
+                            
+<span className="tasktime">
+  ⏰ {t.time}
+</span>
                               </div>
 
                             </div>
