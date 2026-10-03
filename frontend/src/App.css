@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =========================================================
    PRODY — GLOBAL
    ========================================================= */
@@ -189,6 +190,110 @@ h3 {
 
   background: var(--card);
   border-right: 1px solid var(--border);
+=======
+* {
+  transition: all 0.2s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.app {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sidebarbtn {
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebarbtn::before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(99,102,241,0.1);
+  transition: 0.3s ease;
+}
+
+.sidebarbtn:hover::before {
+  left: 0;
+}
+
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+
+  --border: rgba(255,255,255,0.08);
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  color: var(--text);
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s ease;
+}
+.app.light {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --primary: #6366F1;
+  --primary-hover: #4F46E5;
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+}
+
+.sidebar {
+  width: 280px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebarbtn {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  text-align: left;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sidebarbtn:hover {
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--primary);
+}
+>>>>>>> ca57bcb (css fix)
 
   padding: 28px 18px;
 
@@ -268,11 +373,35 @@ h3 {
 .theme-toggle {
   margin-top: auto;
 
+<<<<<<< HEAD
   padding: 10px 12px;
+=======
+.searchtaskcard,
+.addtaskcard {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+
+  background: var(--input-bg);
+  color: var(--text);
+>>>>>>> ca57bcb (css fix)
 
   border-radius: 9px;
   border: 1px solid var(--border);
 
+<<<<<<< HEAD
   background: transparent;
   color: var(--muted);
 
@@ -283,6 +412,174 @@ h3 {
   background: var(--primary-soft);
   color: var(--primary);
   border-color: var(--primary-border);
+=======
+input:focus,
+select:focus {
+  border-color: var(--primary);
+}
+/* .addtaskcard,.searchtaskcard{
+  background-color:#1E293B;
+} */
+.addtaskbtn,.searchtaskbtn{
+  /* display: flex; */
+  justify-content: center;
+}
+.addtaskbtn{
+  width: 150px;
+}
+
+
+
+.taskcard{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  width:100%;
+}
+
+.left{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+
+  flex:1;      /* IMPORTANT */
+  min-width:0; /* IMPORTANT */
+}
+
+.taskcontent{
+display:flex;
+flex-direction:column;
+gap:8px;
+
+flex:1;      /* IMPORTANT */
+}
+
+.meta{
+  display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.right{
+display:flex;
+
+flex-direction:column; /* CHANGE */
+align-items:flex-end;  /* CHANGE */
+
+gap:10px;
+}
+
+.tasktitle{
+  margin:0;
+word-break:break-word;
+}
+
+.tasktime,
+.category{
+  margin:0;
+}
+.category{
+ background: rgba(99, 102, 241, 0.15);
+  color: var(--primary);
+padding:6px 12px;
+border-radius:999px;
+font-size:12px;
+width:fit-content;
+}
+.taskbtns{
+  display:flex;
+  gap:8px;
+}
+.inputaddtask{
+  display: flex;
+  gap: 15px;
+  /* flex-direction: column; */
+}
+h1{
+  font-family: 'Space Grotesk', sans-serif;
+}
+.displaybtn{
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+.mainheading{
+  font-size: 76px;
+}
+.tasksdisplay{
+  display: flex;
+  /* flex-direction: column; */
+  /* gap: 100px; */
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 200;
+  /* justify-content: center; */
+}
+.display{
+  height:60px ;
+  border-radius: 40px;
+  font-size: medium;
+}
+.taskbtns button{
+  font-size:18px;
+  width:45px;
+  height:45px;
+  border-radius:12px;
+}
+.taskinfo{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+
+.tasktitle{
+  font-size:16px;
+  font-weight:500;
+  flex:1;
+}
+
+.tasktime{
+  color:#94A3B8;
+  font-size:14px;
+}
+  /* padding: 60px; */
+.signout{
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+}
+ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+
+  background: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  z-index: 9999;   
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+  transition: all 0.2s ease;
+>>>>>>> ca57bcb (css fix)
 }
 
 
@@ -292,6 +589,32 @@ h3 {
 
 .header {
   background: var(--card);
+<<<<<<< HEAD
+=======
+  color: var(--text);
+  padding: 30px;
+  border-radius: 16px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10000;  /* ⭐ EXTRA SAFETY */
+  justify-content: center;
+  align-items: center;
+  animation: modalPop 0.25s ease;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+>>>>>>> ca57bcb (css fix)
 
   padding: 18px 20px;
 
@@ -300,18 +623,66 @@ h3 {
 
   margin-bottom: 20px;
 
+<<<<<<< HEAD
+=======
+.modal-overlay{
+  position: fixed;
+  top: 0;
+  z-index: 9999;   
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+>>>>>>> ca57bcb (css fix)
   display: flex;
   justify-content: center;
   gap: 250px;
   text-align: center;
   align-items: center;
+<<<<<<< HEAD
 
   box-shadow: var(--shadow);
+=======
+}
+.maindiv{
+  display: flex;
+  /* margin: 0; */
+  /* flex-direction: column; */
+}
+.dashboard {
+  flex: 1;
+  padding: 25px;
+}
+
+.header {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar.light{
+  background-color: var(--card);
+>>>>>>> ca57bcb (css fix)
 }
 
 .header:hover {
   border-color: var(--border-strong);
 }
+<<<<<<< HEAD
+=======
+.sidebarparas{
+  cursor: pointer;
+  font-weight: 600;
+}
+.sidebarparas:hover{
+  color: #6366F1;
+}
+>>>>>>> ca57bcb (css fix)
 
 h1 {
   font-family: "Space Grotesk", sans-serif;
@@ -324,6 +695,7 @@ h2 {
 }
 
 
+<<<<<<< HEAD
 /* =========================================================
    SEARCH / ADD TASK CARDS
    ========================================================= */
@@ -339,6 +711,64 @@ h2 {
 
   margin-bottom: 18px;
 
+=======
+li {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 12px;
+  transform: translateY(0);
+  transition: 0.25s ease;
+}
+
+li:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  border-color: var(--primary);
+}
+
+.taskcard {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.tasktitle {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tasktime {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.category {
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(99,102,241,0.15);
+  color: var(--primary);
+}
+.searchbar{
+  padding-top: 50px;
+}
+.checkbox{
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary);
+  transform: scale(1.2);
+  transition: 0.2s;
+}
+
+.checkbox:checked {
+  transform: scale(1.3);
+}
+
+
+.taskbtns{
+>>>>>>> ca57bcb (css fix)
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -399,6 +829,7 @@ input::placeholder {
   color: var(--muted);
 }
 
+<<<<<<< HEAD
 input:hover,
 select:hover {
   border-color: var(--border-strong);
@@ -431,6 +862,16 @@ button {
   font-size: 14px;
   font-weight: 600;
 
+=======
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+>>>>>>> ca57bcb (css fix)
   position: relative;
   overflow: hidden;
 }
@@ -467,6 +908,7 @@ li {
 
 li:hover {
   transform: translateY(-2px);
+<<<<<<< HEAD
 
   box-shadow: var(--shadow);
 
@@ -886,6 +1328,21 @@ li:hover {
 /* =========================================================
    RIPPLE BUTTON
    ========================================================= */
+=======
+}
+
+.taskbtns button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+
+button:active {
+  transform: scale(0.95);
+}
+>>>>>>> ca57bcb (css fix)
 
 .ripple-btn {
   position: relative;
@@ -894,6 +1351,7 @@ li:hover {
 
 .ripple-btn::after {
   content: "";
+<<<<<<< HEAD
 
   position: absolute;
 
@@ -908,19 +1366,33 @@ li:hover {
 
   opacity: 0;
 
+=======
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  transform: scale(1);
+  opacity: 0;
+>>>>>>> ca57bcb (css fix)
   transition: 0.5s;
 }
 
 .ripple-btn:active::after {
   width: 200px;
   height: 200px;
+<<<<<<< HEAD
 
   opacity: 1;
 
+=======
+  opacity: 1;
+>>>>>>> ca57bcb (css fix)
   transform: scale(0);
 }
 
 
+<<<<<<< HEAD
 /* =========================================================
    RESPONSIVE
    ========================================================= */
@@ -1293,3 +1765,28 @@ li:hover {
   margin: 10px 0;
 }
 
+=======
+
+
+.status {
+  position: relative;
+}
+.status.upcoming::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(99,102,241,0.2);
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(1.3); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+input:focus, select:focus {
+  transform: scale(1.01);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+>>>>>>> ca57bcb (css fix)
