@@ -3,7 +3,7 @@ const user=require("./user")
 
 const schema=new mongoose.Schema({
     task:String,
-    time:Date,
+    time:String,
     userid:String,
     priority:String,
     // _id=String,
